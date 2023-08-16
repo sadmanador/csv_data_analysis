@@ -2,7 +2,13 @@
 import Papa from "papaparse";
 import { useState } from "react";
 
-const PreviewForm = ({ data, setFileData, setFileUpload, setToggle, toggle }) => {
+const PreviewForm = ({
+  data,
+  setFileData,
+  setFileUpload,
+  setToggle,
+  toggle,
+}) => {
   const { name, description, client, constructor } = data;
 
   const handleFile = (event) => {
@@ -17,10 +23,12 @@ const PreviewForm = ({ data, setFileData, setFileUpload, setToggle, toggle }) =>
   };
 
   const handleToggle = (event) => {
-    if(!toggle) {
-        setToggle(true);
-    } else { setToggle(false); }
-  }
+    if (!toggle) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto ">
@@ -77,20 +85,26 @@ const PreviewForm = ({ data, setFileData, setFileUpload, setToggle, toggle }) =>
           <label className="label">
             <span className="label-text">File upload</span>
           </label>
-          <input
-            type="file"
-            name="file"
-            accept=".csv"
-            onChange={handleFile}
-            className="file-input
+          <div>
+            <input
+              type="file"
+              name="file"
+              accept=".csv"
+              onChange={handleFile}
+              className="file-input
             file-input-bordered w-full max-w-xs"
-          />
-        </div>
-        <div className="form-control">
-          <label className="label cursor-pointer">
-            <span className="label-text">Manually insert</span>
-            <input type="checkbox" className="toggle" onChange={handleToggle}/>
-          </label>
+            />
+            <div className="form-control w-52">
+              <label className="label cursor-pointer">
+                <span className="label-text">Manually insert</span>
+                <input
+                  type="checkbox"
+                  className="toggle"
+                  onChange={handleToggle}
+                />
+              </label>
+            </div>
+          </div>
         </div>
       </form>
     </div>
