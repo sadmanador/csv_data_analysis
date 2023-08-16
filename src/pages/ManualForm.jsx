@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 
-
-const ManualForm = ({ setFileData }) => {
-
-
+const ManualForm = ({ setFileData, setFileUpload }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const minX = event.target.x_min.value;
@@ -16,19 +13,20 @@ const ManualForm = ({ setFileData }) => {
     const data = [
       {
         KP: 0,
-        X: minX,
-        Y: minY,
-        Z: minZ,
+        X: parseFloat(minX),
+        Y: parseFloat(minY),
+        Z: parseFloat(minZ),
       },
       {
         KP: 1,
-        X: maxX,
-        Y: maxY,
-        Z: maxZ,
+        X: parseFloat(maxX),
+        Y: parseFloat(maxY),
+        Z: parseFloat(maxZ),
       },
     ];
 
     setFileData(data);
+    setFileUpload(true)
   };
 
   return (
@@ -91,7 +89,7 @@ const ManualForm = ({ setFileData }) => {
               />
               <input
                 required
-                name="z_min"
+                name="z_max"
                 type="text"
                 placeholder="max"
                 className="input input-bordered"

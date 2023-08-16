@@ -29,8 +29,8 @@ function App() {
           toggle={toggle}
         ></PreviewForm>
         )}
-        {toggle && <ManualForm setFileData={setFileData}/>}
-      {fileUpload && <Table fileData={fileData}/>}
+        {(toggle && !fileUpload) && <ManualForm setFileData={setFileData} setFileUpload={setFileUpload}/>}
+      {fileUpload && <Table fileData={fileData} data={data} />}
     </>
   );
 }
